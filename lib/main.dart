@@ -1,3 +1,4 @@
+import 'package:cbdyas_project/components/privacy_policy_page.dart';
 import 'package:cbdyas_project/screens/settings/loagin_page.dart';
 import 'package:flutter/material.dart';
 import 'screens/settings/firebase_initialized_router.dart';

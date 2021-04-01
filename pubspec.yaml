@@ -27,10 +27,11 @@ dependencies:
   cupertino_icons: ^1.0.2
   firebase_auth: ^0.20.1
   firebase_core: ^0.7.0
+  flutter_icons: ^1.1.0
   google_fonts: ^1.1.2
   responsive_builder: ^0.3.0
   url_launcher: ^6.0.0
-  flutter_icons: ^1.1.0
+  youtube_player_iframe: ^2.0.0
 
 dev_dependencies:
   flutter_test:
@@ -46,7 +47,18 @@ flutter:
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
   assets:
-    - images/instagram.png
+    - images/header_1.jpeg
+    - images/header_2.jpeg
+    - images/about_us.jpg
+    - images/about_us_2.jpg
+    - images/certificate_1.jpg
+    - images/certificate_2.jpg
+    - images/certificate_3.jpg
+    - images/certificate_4.jpg
+    - images/description_1.jpg
+    - images/description_2.jpg
+    - images/description_3.jpg
+    - images/q_and_a.jpg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see
