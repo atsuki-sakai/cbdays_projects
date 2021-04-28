@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class SnapShotErrorPage extends StatelessWidget {
   const SnapShotErrorPage({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

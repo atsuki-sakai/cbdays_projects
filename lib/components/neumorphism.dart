@@ -54,15 +54,15 @@ BoxDecoration nmbtn = BoxDecoration(
 class NMIconButton extends StatelessWidget {
   final IconData icon;
   final String hoverMessage;
-  final Function onTap;
+  final VoidCallback? onTap;
   final double height;
   final double width;
   final Color iconColor;
 
   const NMIconButton({
-    @required this.icon,
+    required this.icon,
     this.iconColor = Colors.green,
-    @required this.hoverMessage,
+    required this.hoverMessage,
     this.onTap,
     this.height = 55,
     this.width = 55,
@@ -89,19 +89,19 @@ class NMIconButton extends StatelessWidget {
 }
 
 class NMLabel extends StatelessWidget {
-  final double width;
+  double? width;
   final double height;
-  final Function onTap;
+  final VoidCallback? onTap;
   final double radius;
   final Widget child;
-  Color color;
+  Color? color;
   NMLabel({
     this.onTap,
     this.height = 40.0,
     this.width,
     this.radius = 15.0,
     this.color,
-    @required this.child,
+    required this.child,
   });
 
   @override

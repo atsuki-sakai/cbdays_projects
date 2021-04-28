@@ -10,11 +10,12 @@ class Footer extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Spacer(flex: 2,),
             TextButton(
               child: Text(
                 'プライバシーポリシー',
                 style: GoogleFonts.sawarabiMincho(
-                    fontSize: 12.0, color: Colors.grey),
+                    fontSize: 14.0, color: Colors.grey),
               ),
               onPressed: () {
                 // TODO - show privacy poricy
@@ -23,17 +24,16 @@ class Footer extends StatelessWidget {
                 }));
               },
             ),
-            SizedBox(
-              width: 60.0,
-            ),
+            Spacer(flex: 1,),
             TextButton(
               child: Text('特定商取引法に基づく表記',
                   style: GoogleFonts.sawarabiMincho(
-                      fontSize: 12.0, color: Colors.grey)),
+                      fontSize: 14.0, color: Colors.grey)),
               onPressed: () {
                 // TODO - show privacy poricy
               },
             ),
+            Spacer(flex: 2,),
           ],
         ),
         SizedBox(

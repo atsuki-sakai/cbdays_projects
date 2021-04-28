@@ -1,18 +1,19 @@
 import 'dart:ui';
+import 'package:cbdyas_project/components/app_logo.dart';
+import 'package:cbdyas_project/components/navigation_bar/navigation_bar.dart';
+import 'package:cbdyas_project/constants/routes.dart';
 import 'package:cbdyas_project/screens/about_us/about_us.dart';
 import 'package:cbdyas_project/screens/cbd_description/cbd_description.dart';
 import 'package:cbdyas_project/screens/cbd_history/cbd_history.dart';
 import 'package:cbdyas_project/screens/cbd_q_and_a/cbd_q_and_a.dart';
 import 'package:cbdyas_project/screens/certificate/certificate_page.dart';
 import 'package:cbdyas_project/screens/home_page/home_page.dart';
-import 'package:cbdyas_project/screens/home_page/navigation_bar/navigation_bar.dart';
 import 'package:cbdyas_project/screens/shop/shop_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MenuDrawer extends StatelessWidget {
-
   List<String> menuItems = [
     'Home',
     'SHOP',
@@ -35,48 +36,28 @@ class MenuDrawer extends StatelessWidget {
   static void transitionToMenuItem(BuildContext context, int index) {
     switch (index) {
       case 0:
-        Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return HomePage();
-        }));
+        Navigator.pushNamedAndRemoveUntil(context, Routes.homePage, (route) => false);
         break;
       case 1:
-        Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return ShopPage();
-        }));
+        Navigator.pushNamedAndRemoveUntil(context, Routes.shopPage, (route) => false);
         break;
       case 2:
-        Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return AboutUsPage();
-        }));
-
+        Navigator.pushNamedAndRemoveUntil(context, Routes.aboutUsPage, (route) => false);
         break;
       case 3:
-        Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return CertificatePage();
-        }));
-
+        Navigator.pushNamedAndRemoveUntil(context, Routes.certificatePage, (route) => false);
         break;
       case 4:
-        Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return CBDDescriptionPage();
-        }));
-
+        Navigator.pushNamedAndRemoveUntil(context, Routes.cbdDescriptionPage, (route) => false);
         break;
       case 5:
-        Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return CBDHistoryPage();
-        }));
-
+        Navigator.pushNamedAndRemoveUntil(context, Routes.cbdHistoryPage, (route) => false);
         break;
       case 6:
-        Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return CBDQAndAPage();
-        }));
+        Navigator.pushNamedAndRemoveUntil(context, Routes.cbdQandAPage, (route) => false);
         break;
       default:
-        Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return HomePage();
-        }));
+        Navigator.pushNamedAndRemoveUntil(context, Routes.homePage, (route) => false);
     }
   }
 
@@ -89,7 +70,7 @@ class MenuDrawer extends StatelessWidget {
           if (index == menuItems.length + 1) return _closeDrawerButton(context);
           return ListTile(
             contentPadding:
-            const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
+                const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
             leading: Icon(menuIcons[index - 1]),
             trailing: Icon(Icons.arrow_forward_ios),
             title: Text(
@@ -120,7 +101,7 @@ class MenuDrawer extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          navigationTitle(fontSize: 28.0),
+          AppLogo(fontSize: 28.0),
           SizedBox(
             width: 12.0,
           ),

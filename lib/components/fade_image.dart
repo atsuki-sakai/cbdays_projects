@@ -8,7 +8,7 @@ class FadeImage extends StatefulWidget {
 }
 
 class _FadeImageState extends State<FadeImage> {
-  Timer crossFadeTimer;
+  Timer? crossFadeTimer;
   CrossFadeState crossFadeState = CrossFadeState.showFirst;
 
   @override
@@ -28,7 +28,7 @@ class _FadeImageState extends State<FadeImage> {
   @override
   void dispose() {
     if (crossFadeTimer != null) {
-      crossFadeTimer.cancel();
+      crossFadeTimer!.cancel();
       crossFadeTimer = null;
     }
     super.dispose();

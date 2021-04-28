@@ -1,11 +1,23 @@
+import 'package:cbdyas_project/components/app_logo.dart';
+import 'package:cbdyas_project/components/menu_drawer.dart';
 import 'package:cbdyas_project/components/mobile_desctop_view.dart';
+import 'package:cbdyas_project/components/navigation_bar/sub_navigation_bar.dart';
 import 'package:cbdyas_project/components/neumorphism.dart';
-import 'package:cbdyas_project/screens/home_page/menu_drawer.dart';
-import 'package:cbdyas_project/screens/home_page/navigation_bar/sub_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class NavigationBar extends StatelessWidget {
+const List<String> navigationItems = [
+  // READ -  一番初めの要素が大きくピンク色に表示される。
+  'Home',
+  'SHOP',
+  'ABOUT US',
+  '成分分析証明',
+  'CBDについて',
+  'CBDの始まり',
+  'CBD Q&A',
+];
+
+class NavigationBar extends StatelessWidget with PreferredSizeWidget{
   @override
   Widget build(BuildContext context) {
     return MobileDesktopView(
@@ -14,6 +26,10 @@ class NavigationBar extends StatelessWidget {
       mobileView: MobileNavigationBar(),
     );
   }
+
+  @override
+  // TODO: implement preferredSize
+  Size get preferredSize => Size(double.infinity, 140);
 }
 
 class MobileNavigationBar extends StatelessWidget {
@@ -36,15 +52,7 @@ class MobileNavigationBar extends StatelessWidget {
               SizedBox(
                 width: 20.0,
               ),
-              navigationTitle(fontSize: titleSize),
-              SizedBox(
-                width: 12.0,
-              ),
-              Container(
-                width: 5,
-                height: navHeight / 2,
-                color: Colors.green.shade600,
-              ),
+              AppLogo(fontSize: titleSize),
               Spacer(),
               NMIconButton(
                 hoverMessage: 'Menu Open',
@@ -88,15 +96,7 @@ class TabletNavigationBar extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
       child: Row(
         children: [
-          navigationTitle(fontSize: titleSize),
-          SizedBox(
-            width: 8.0,
-          ),
-          Container(
-            width: 5,
-            height: navHeight / 2,
-            color: Colors.green.shade600,
-          ),
+          AppLogo(fontSize: titleSize),
           Spacer(),
           SubNavigationBar(),
           SizedBox(
@@ -122,49 +122,30 @@ class DesktopNavigationBar extends StatelessWidget {
   final double titleSize = 32.0;
   final double navHeight = 100;
 
-  List<String> menuItems = [
-    'Home',
-    'SHOP',
-    'ABOUT US',
-    '成分分析証明',
-    'CBDについて',
-    'CBDの始まり',
-    'CBD Q&A',
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Container(
           height: navHeight,
-          padding: EdgeInsets.symmetric(horizontal: 40.0),
+          padding: const EdgeInsets.symmetric(horizontal: 40.0),
           child: Row(
             children: [
-              navigationTitle(fontSize: titleSize),
-              SizedBox(
-                width: 6.0,
-              ),
-              Container(
-                width: 5,
-                height: navHeight / 2,
-                color: Colors.green.shade600,
-              ),
+              AppLogo(fontSize: titleSize),
               Spacer(),
-              for (var index = 0; index < menuItems.length; index++) ...{
+              for (var index = 0; index < navigationItems.length; index++) ...{
                 if (index == 0) ...{
                   NMLabel(
                     width: 90,
                     child: Text(
-                      menuItems[index],
+                      navigationItems[index],
                       style: GoogleFonts.montserrat(
                           fontWeight: FontWeight.w700,
                           color: Colors.white,
                           fontSize: 18.0),
                     ),
                     color: Colors.pinkAccent.shade200,
-                    onTap: () =>
-                        MenuDrawer.transitionToMenuItem(context, index),
+                    onTap: () => MenuDrawer.transitionToMenuItem(context, index),
                   ),
                   SizedBox(
                     width: buttonSpace,
@@ -172,12 +153,11 @@ class DesktopNavigationBar extends StatelessWidget {
                 } else ...{
                   NMLabel(
                     child: Text(
-                      menuItems[index],
+                      navigationItems[index],
                       style:
                           GoogleFonts.montserrat(fontWeight: FontWeight.w700),
                     ),
-                    onTap: () =>
-                        MenuDrawer.transitionToMenuItem(context, index),
+                    onTap: () => MenuDrawer.transitionToMenuItem(context, index),
                   ),
                   SizedBox(
                     width: buttonSpace,
@@ -199,31 +179,4 @@ class DesktopNavigationBar extends StatelessWidget {
       ],
     );
   }
-}
-
-Text navigationTitle({double fontSize = 42.0}) {
-  return Text.rich(
-    TextSpan(
-      style: GoogleFonts.montserrat(
-          fontSize: fontSize, fontWeight: FontWeight.bold),
-      children: [
-        TextSpan(text: 'CB'),
-        TextSpan(
-          text: 'D',
-          style: GoogleFonts.montserrat(
-            fontSize: fontSize,
-            fontWeight: FontWeight.bold,
-            color: Colors.green.shade600,
-          ),
-        ),
-        TextSpan(
-          text: 'AYS',
-          style: GoogleFonts.montserrat(
-            fontSize: fontSize,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ],
-    ),
-  );
 }

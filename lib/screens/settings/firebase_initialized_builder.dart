@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-class FirebaseInitializedRouter extends StatelessWidget {
+class FirebaseInitializedBuilder extends StatelessWidget {
   final Widget errorPage;
   final Widget successPage;
   final Widget loadingPage;
   // Create the initialization Future outside of `build`:
   final Future<FirebaseApp> _initialization = Firebase.initializeApp();
 
-  FirebaseInitializedRouter(
-      {Key key, this.errorPage, this.successPage, this.loadingPage})
+  FirebaseInitializedBuilder(
+      {Key? key,required this.errorPage,required this.successPage,required this.loadingPage})
       : super(key: key);
 
   @override

@@ -232,11 +232,11 @@ class ProductItem extends StatelessWidget {
   final Function onTap;
   final double iconSize;
   const ProductItem({
-    Key key,
-    @required this.imagePath,
-    @required this.name,
-    @required this.price,
-    @required this.onTap,
+    Key? key,
+    required this.imagePath,
+    required this.name,
+    required this.price,
+    required this.onTap,
     this.fontSize = 22.0,
     this.iconSize = 22.0,
   }) : super(key: key);
@@ -255,7 +255,7 @@ class ProductItem extends StatelessWidget {
               height: 12.0,
             ),
             Text(
-              name ?? '',
+              name,
               style: GoogleFonts.montserrat(
                   fontSize: fontSize, fontWeight: FontWeight.bold),
             ),
@@ -295,7 +295,7 @@ class ProductItem extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: InkWell(
-                  onTap: onTap,
+                  onTap: onTap(),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

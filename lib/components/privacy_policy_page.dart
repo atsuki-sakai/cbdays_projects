@@ -1,5 +1,5 @@
-import 'package:cbdyas_project/screens/home_page/menu_drawer.dart';
-import 'package:cbdyas_project/screens/home_page/navigation_bar/navigation_bar.dart';
+import 'package:cbdyas_project/components/menu_drawer.dart';
+import 'package:cbdyas_project/components/navigation_bar/navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -48,7 +48,7 @@ class PrivacyPolicyPage extends StatelessWidget {
     );
   }
 
-  Container _detailLabel({String title, String subTitle}) {
+  Container _detailLabel({required String title,required String subTitle}) {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 20),
       child: Column(

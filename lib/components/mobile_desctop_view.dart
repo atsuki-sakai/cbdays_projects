@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class MobileDesktopView extends StatelessWidget {
-  const MobileDesktopView({this.mobileView, this.tableView, this.desktopView});
+  const MobileDesktopView({required this.mobileView,required this.tableView,required this.desktopView});
 
   final Widget mobileView;
   final Widget tableView;

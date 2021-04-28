@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class LoagingPage extends StatelessWidget {
+class loadingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

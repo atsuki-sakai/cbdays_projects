@@ -1,9 +1,12 @@
 import 'package:cbdyas_project/components/footer.dart';
-import 'package:cbdyas_project/screens/home_page/menu_drawer.dart';
-import 'package:cbdyas_project/screens/home_page/navigation_bar/navigation_bar.dart';
+import 'package:cbdyas_project/components/menu_drawer.dart';
+import 'package:cbdyas_project/components/navigation_bar/navigation_bar.dart';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
+
+// youtube video ID :  GR6ibJnC0rs
 
 class CBDHistoryPage extends StatefulWidget {
   @override
@@ -23,11 +26,11 @@ class _CBDHistoryPageState extends State<CBDHistoryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: NavigationBar(),
       drawer: MenuDrawer(),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            NavigationBar(),
             SizedBox(
               height: 40.0,
             ),
@@ -154,5 +157,3 @@ class _CBDHistoryPageState extends State<CBDHistoryPage> {
     );
   }
 }
-
-// GR6ibJnC0rs

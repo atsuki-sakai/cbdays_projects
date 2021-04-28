@@ -1,5 +1,5 @@
 import 'package:cbdyas_project/components/mobile_desctop_view.dart';
-import 'package:cbdyas_project/screens/home_page/fade_image.dart';
+import 'package:cbdyas_project/components/fade_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
