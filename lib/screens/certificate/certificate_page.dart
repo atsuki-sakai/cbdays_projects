@@ -2,16 +2,20 @@ import 'package:cbdyas_project/components/footer.dart';
 import 'package:cbdyas_project/components/menu_drawer.dart';
 import 'package:cbdyas_project/components/mobile_desctop_view.dart';
 import 'package:cbdyas_project/components/navigation_bar/navigation_bar.dart';
+import 'package:cbdyas_project/service/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CertificatePage extends StatelessWidget {
+  final Auth auth;
+
+  const CertificatePage({Key? key,required this.auth}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MobileDesktopView(
-      mobileView: MobileCertificatePage(),
-      tableView: TabletCertificatePage(),
-      desktopView: DeskTopCertificatePage(),
+      mobileView: MobileCertificatePage(auth: auth,),
+      tableView: TabletCertificatePage(auth: auth,),
+      desktopView: DeskTopCertificatePage(auth: auth,),
     );
   }
 }
@@ -21,6 +25,9 @@ class MobileCertificatePage extends StatelessWidget {
   final double titleSize = 32.0;
   final double widthParams = 0.9;
   final double defaultTextSize = 14.0;
+  final Auth auth;
+
+  const MobileCertificatePage({Key? key,required this.auth}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final contextWidth = MediaQuery.of(context).size.width * widthParams;
@@ -29,7 +36,7 @@ class MobileCertificatePage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            NavigationBar(),
+            NavigationBar(auth: auth,),
             SizedBox(
               height: contentPadding,
             ),
@@ -100,6 +107,9 @@ class TabletCertificatePage extends StatelessWidget {
   final double titleSize = 36.0;
   final double widthParams = 0.8;
   final double defaultTextSize = 14.0;
+  final Auth auth;
+
+  const TabletCertificatePage({Key? key,required this.auth}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final contextWidth = MediaQuery.of(context).size.width * widthParams;
@@ -108,7 +118,7 @@ class TabletCertificatePage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            NavigationBar(),
+            NavigationBar(auth: auth,),
             SizedBox(
               height: contentPadding,
             ),
@@ -184,11 +194,14 @@ class DeskTopCertificatePage extends StatelessWidget {
   final double contentPadding = 40.0;
   final double titleSize = 42.0;
   final double widthParams = 0.7;
+  final Auth auth;
+
+  const DeskTopCertificatePage({Key? key,required this.auth}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final contextWidth = MediaQuery.of(context).size.width * widthParams;
     return Scaffold(
-      appBar: NavigationBar(),
+      appBar: NavigationBar(auth: auth,),
       drawer: MenuDrawer(),
       body: SingleChildScrollView(
         child: Column(

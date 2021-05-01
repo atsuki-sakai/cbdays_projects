@@ -1,4 +1,5 @@
-import 'package:cbdyas_project/components/privacy_policy_page.dart';
+import 'package:cbdyas_project/model/routes.dart';
+import 'package:cbdyas_project/screens/utils/privacy_policy_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -17,21 +18,14 @@ class Footer extends StatelessWidget {
                 style: GoogleFonts.sawarabiMincho(
                     fontSize: 14.0, color: Colors.grey),
               ),
-              onPressed: () {
-                // TODO - show privacy poricy
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return PrivacyPolicyPage();
-                }));
-              },
+              onPressed: () => Routes.pushRoute(context, route: Routes.privacyAndPoricyPage),
             ),
             Spacer(flex: 1,),
             TextButton(
               child: Text('特定商取引法に基づく表記',
                   style: GoogleFonts.sawarabiMincho(
                       fontSize: 14.0, color: Colors.grey)),
-              onPressed: () {
-                // TODO - show privacy poricy
-              },
+              onPressed: () => Routes.pushRoute(context, route: Routes.privacyAndPoricyPage),
             ),
             Spacer(flex: 2,),
           ],

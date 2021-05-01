@@ -1,15 +1,17 @@
 import 'package:cbdyas_project/components/footer.dart';
 import 'package:cbdyas_project/components/menu_drawer.dart';
 import 'package:cbdyas_project/components/navigation_bar/navigation_bar.dart';
+import 'package:cbdyas_project/service/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AboutUsPage extends StatelessWidget {
-  const AboutUsPage({Key? key}) : super(key: key);
+  const AboutUsPage({Key? key, required this.auth}) : super(key: key);
+  final Auth auth;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: NavigationBar(),
+      appBar: NavigationBar(auth: auth,),
       drawer: MenuDrawer(),
       body: SingleChildScrollView(
         child: Column(
@@ -110,7 +112,6 @@ class AboutUsPage extends StatelessWidget {
 Widget _buildConntents(BuildContext context) {
   final width = MediaQuery.of(context).size.width;
   return Container(
-    // padding: EdgeInsets.symmetric(horizontal: 120.0, vertical: 40.0),
     width: width * 0.7,
     child: Column(
       children: [

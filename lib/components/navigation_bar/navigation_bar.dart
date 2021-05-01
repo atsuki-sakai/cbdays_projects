@@ -3,6 +3,7 @@ import 'package:cbdyas_project/components/menu_drawer.dart';
 import 'package:cbdyas_project/components/mobile_desctop_view.dart';
 import 'package:cbdyas_project/components/navigation_bar/sub_navigation_bar.dart';
 import 'package:cbdyas_project/components/neumorphism.dart';
+import 'package:cbdyas_project/service/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -17,18 +18,25 @@ const List<String> navigationItems = [
   'CBD Q&A',
 ];
 
-class NavigationBar extends StatelessWidget with PreferredSizeWidget{
+class NavigationBar extends StatelessWidget with PreferredSizeWidget {
+  const NavigationBar({Key? key, required this.auth}) : super(key: key);
+  final Auth auth;
+
   @override
   Widget build(BuildContext context) {
     return MobileDesktopView(
-      desktopView: DesktopNavigationBar(),
-      tableView: TabletNavigationBar(),
-      mobileView: MobileNavigationBar(),
+      desktopView: DesktopNavigationBar(
+        auth: auth,
+      ),
+      tableView: TabletNavigationBar(
+        auth: auth,
+      ),
+      mobileView: MobileNavigationBar(auth: auth),
     );
   }
 
+  // NavigationBar の高さ
   @override
-  // TODO: implement preferredSize
   Size get preferredSize => Size(double.infinity, 140);
 }
 
@@ -40,47 +48,34 @@ class MobileNavigationBar extends StatelessWidget {
   final double buttonTextSize = 12.0;
   final double buttonWidth = 90;
   final double buttonHeight = 30;
+  final Auth auth;
+
+  const MobileNavigationBar({Key? key, required this.auth}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          height: navHeight,
-          child: Row(
-            children: [
-              SizedBox(
-                width: 20.0,
-              ),
-              AppLogo(fontSize: titleSize),
-              Spacer(),
-              NMIconButton(
-                hoverMessage: 'Menu Open',
-                icon: Icons.menu,
-                iconColor: Colors.black87,
-                onTap: () {
-                  Scaffold.of(context).openDrawer();
-                },
-              ),
-              SizedBox(
-                width: 20,
-              ),
-            ],
+    return Container(
+      height: navHeight,
+      child: Row(
+        children: [
+          SizedBox(
+            width: 12.0,
           ),
-        ),
-        SizedBox(
-          height: 12.0,
-        ),
-        Row(
-          children: [
-            Spacer(),
-            SubNavigationBar(),
-            SizedBox(
-              width: 20,
-            ),
-          ],
-        ),
-      ],
+          AppLogo(fontSize: titleSize),
+          Spacer(),
+          SubNavigationBar(auth: auth),
+          SizedBox(width: 12,),
+          NMIconButton(
+            hoverMessage: 'Menu Open',
+            icon: Icons.menu,
+            iconColor: Colors.black87,
+            onTap: () {
+              Scaffold.of(context).openDrawer();
+            },
+          ),
+          SizedBox(width: 12,)
+        ],
+      ),
     );
   }
 }
@@ -89,26 +84,34 @@ class TabletNavigationBar extends StatelessWidget {
   final double titleSize = 28.0;
   final double navHeight = 100;
 
+  final Auth auth;
+
+  const TabletNavigationBar({Key? key, required this.auth}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
       height: navHeight,
-      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-      child: Row(
+      padding: const EdgeInsets.symmetric(horizontal: 20.0,vertical: 12.0),
+      child: Column(
         children: [
-          AppLogo(fontSize: titleSize),
-          Spacer(),
-          SubNavigationBar(),
-          SizedBox(
-            width: 20.0,
-          ),
-          NMIconButton(
-            iconColor: Colors.black87,
-            icon: Icons.menu,
-            hoverMessage: 'Menu',
-            onTap: () {
-              Scaffold.of(context).openDrawer();
-            },
+          Row(
+            children: [
+              AppLogo(fontSize: titleSize),
+              Spacer(),
+              SubNavigationBar(auth: auth),
+              SizedBox(
+                width: 20.0,
+              ),
+              NMIconButton(
+                iconColor: Colors.black87,
+                icon: Icons.menu,
+                hoverMessage: 'Menu',
+                onTap: () {
+                  Scaffold.of(context).openDrawer();
+                },
+              ),
+            ],
           ),
         ],
       ),
@@ -118,9 +121,12 @@ class TabletNavigationBar extends StatelessWidget {
 
 class DesktopNavigationBar extends StatelessWidget {
   final double iconSize = 38.0;
-  final double buttonSpace = 12.0;
+  final double buttonSpace = 10.0;
   final double titleSize = 32.0;
   final double navHeight = 100;
+  final Auth auth;
+
+  const DesktopNavigationBar({Key? key, required this.auth}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -128,7 +134,7 @@ class DesktopNavigationBar extends StatelessWidget {
       children: [
         Container(
           height: navHeight,
-          padding: const EdgeInsets.symmetric(horizontal: 40.0),
+          padding: const EdgeInsets.symmetric(horizontal: 26.0),
           child: Row(
             children: [
               AppLogo(fontSize: titleSize),
@@ -140,12 +146,13 @@ class DesktopNavigationBar extends StatelessWidget {
                     child: Text(
                       navigationItems[index],
                       style: GoogleFonts.montserrat(
-                          fontWeight: FontWeight.w700,
+                          fontWeight: FontWeight.w600,
                           color: Colors.white,
-                          fontSize: 18.0),
+                          fontSize: 15.0),
                     ),
                     color: Colors.pinkAccent.shade200,
-                    onTap: () => MenuDrawer.transitionToMenuItem(context, index),
+                    onTap: () =>
+                        MenuDrawer.transitionToMenuItem(context, index),
                   ),
                   SizedBox(
                     width: buttonSpace,
@@ -157,7 +164,8 @@ class DesktopNavigationBar extends StatelessWidget {
                       style:
                           GoogleFonts.montserrat(fontWeight: FontWeight.w700),
                     ),
-                    onTap: () => MenuDrawer.transitionToMenuItem(context, index),
+                    onTap: () =>
+                        MenuDrawer.transitionToMenuItem(context, index),
                   ),
                   SizedBox(
                     width: buttonSpace,
@@ -170,7 +178,7 @@ class DesktopNavigationBar extends StatelessWidget {
         Row(
           children: [
             Spacer(),
-            SubNavigationBar(),
+            SubNavigationBar(auth: auth),
             SizedBox(
               width: 40.0,
             ),

@@ -1,5 +1,5 @@
 import 'package:cbdyas_project/model/create_user_credentials.dart';
-import 'package:uuid/uuid.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class CbdaysUser {
   CbdaysUser({
@@ -9,17 +9,18 @@ class CbdaysUser {
     this.lastName = '',
     this.surNameFurigana = '',
     this.lastNameFurigana = '',
-    this.callNumber = 0,
-    this.birthYear = 0,
-    this.birthMonth = 0,
-    this.birthDay = 0,
+    this.callNumber = '',
+    this.birthYear = '',
+    this.birthMonth = '',
+    this.birthDay = '',
     this.fullBirthDay = '',
     this.isSpouce = false,
-    this.haveChildren = 0,
+    this.haveChildren = '',
+    this.createdAt,
   });
 
   CbdaysUser.toCredentials({required CreateUserCredentials credentials}) {
-    uid = Uuid().v4();
+    uid = credentials.uid;
     email = credentials.email;
     surName = credentials.surName;
     lastName = credentials.lastName;
@@ -32,6 +33,7 @@ class CbdaysUser {
     fullBirthDay = credentials.fullBirthDay;
     isSpouce = credentials.isSpouce;
     haveChildren = credentials.haveChildren;
+    createdAt = FieldValue.serverTimestamp();
   }
 
   late final String uid;
@@ -40,13 +42,14 @@ class CbdaysUser {
   late final String lastName;
   late final String surNameFurigana;
   late final String lastNameFurigana;
-  late final int callNumber;
-  late final int birthYear;
-  late final int birthMonth;
-  late final int birthDay;
+  late final String callNumber;
+  late final String birthYear;
+  late final String birthMonth;
+  late final String birthDay;
   late final String fullBirthDay;
   late final bool isSpouce;
-  late final int haveChildren;
+  late final String haveChildren;
+  late final FieldValue? createdAt;
 
   factory CbdaysUser.fromMap(Map<String, dynamic> data) {
     return CbdaysUser(
@@ -63,6 +66,7 @@ class CbdaysUser {
       fullBirthDay: data['fullBirthDay'],
       isSpouce: data['isSpouce'],
       haveChildren: data['haveChildren'],
+      createdAt: data['createdAd']
     );
   }
 
@@ -81,6 +85,7 @@ class CbdaysUser {
       'fullBirthDay': this.fullBirthDay,
       'isSpouce': this.isSpouce,
       'haveChildren': this.haveChildren,
+      'createAd' : this.createdAt,
     };
   }
 
@@ -90,13 +95,13 @@ class CbdaysUser {
     String? lastName,
     String? surNameFurigana,
     String? lastNameFurigana,
-    int? callNumber,
-    int? birthYear,
-    int? birthMonth,
-    int? birthDay,
+    String? callNumber,
+    String? birthYear,
+    String? birthMonth,
+    String? birthDay,
     String? fullBirthDay,
     bool? isSpouce,
-    int? haveChildren,
+    String? haveChildren,
   }) {
     this.email = email ?? this.email;
     this.surName = surName ?? this.surName;

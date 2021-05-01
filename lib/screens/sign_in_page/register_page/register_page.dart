@@ -9,6 +9,7 @@ class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: SingleChildScrollView(
         child: Center(
           child: Container(
@@ -27,21 +28,12 @@ class RegisterPage extends StatelessWidget {
                           color: Colors.black87,
                           letterSpacing: 0),
                     ),
-                    Spacer(),
-                    TextButton(
-                        onPressed: () => Navigator.pop(context),
-                        child: Text(
-                          'すでにアカウントをお持ちの方はこちらへ。',
-                          style: GoogleFonts.montserrat(
-                              color: Colors.blue, fontSize: 16),
-                        ),
-                    ),
                   ],
                 ),
                 SizedBox(
                   height: 42,
                 ),
-                RegisterForm.create(context, auth: auth),
+                RegisterForm(auth: auth,),
               ],
             ),
           ),

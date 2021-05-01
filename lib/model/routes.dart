@@ -12,6 +12,7 @@ class Routes {
   static const String cbdQandAPage = 'question';
   static const String shopPage = 'shop';
   static const String cartPage = 'cart';
+  static const String privacyAndPoricyPage = 'privacyandproricy';
 
   static void pushRoute(BuildContext context ,{required String route}) => Navigator.of(context).pushNamed(route);
 

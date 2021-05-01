@@ -1,31 +1,31 @@
 import 'dart:io';
 
-import 'package:cbdyas_project/constants/custom_exception.dart';
+import 'package:cbdyas_project/helper/custom_exception.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 
 Future<bool?> showAlertDialog(BuildContext context,
-    {required String title,
-    required String message,
-    required String actionButtonText,
-    String? cancelButtonText}) async {
+    {required String code,
+    required String content,
+    required String defaultActionText,
+    String? cancelActionText}) async {
   if (!Platform.isIOS) {
     return showDialog(
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: Text(title),
-            content: Text(message),
+            title: Text(code),
+            content: Text(content),
             actions: [
               TextButton(
                   onPressed: () => Navigator.of(context).pop(true),
-                  child: Text(actionButtonText)),
-              if (cancelButtonText != null) ...{
+                  child: Text(defaultActionText)),
+              if (cancelActionText != null) ...{
                 TextButton(
                   onPressed: () => Navigator.of(context).pop(false),
-                  child: Text(cancelButtonText),
+                  child: Text(cancelActionText),
                 )
               },
             ],
@@ -36,18 +36,18 @@ Future<bool?> showAlertDialog(BuildContext context,
         context: context,
         builder: (context) {
           return CupertinoAlertDialog(
-            title: Text(title),
-            content: Text(message),
+            title: Text(code),
+            content: Text(content),
             actions: [
               TextButton(
                   onPressed: () {
                     Navigator.of(context).pop(true);
                   },
-                  child: Text(actionButtonText)),
-              if (cancelButtonText != null) ...{
+                  child: Text(defaultActionText)),
+              if (cancelActionText != null) ...{
                 TextButton(
                   onPressed: () => Navigator.of(context).pop(false),
-                  child: Text(cancelButtonText),
+                  child: Text(cancelActionText),
                 )
               },
             ],

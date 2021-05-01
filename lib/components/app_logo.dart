@@ -19,7 +19,7 @@ class AppLogo extends StatelessWidget {
                 text: 'CBD',
                 style: GoogleFonts.montserrat(
                   fontSize: fontSize,
-                  color: Colors.green.shade700,
+                  color: Colors.black,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -27,51 +27,25 @@ class AppLogo extends StatelessWidget {
                 text: 'AYS',
                 style: GoogleFonts.montserrat(
                   fontSize: fontSize,
-                  fontWeight: FontWeight.w500,
+                  fontWeight: FontWeight.bold,
                   color: Colors.black,
                 ),
               ),
             ],
           ),
+        ),
+        Container(
+          height: 40,
+          width: 2,
+          color: Colors.green,
+          margin: const EdgeInsets.only(left: 6),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12),
+          padding: const EdgeInsets.symmetric(horizontal: 6),
           child: Icon(
-            Icons.local_cafe_outlined,
+            Icons.science_rounded,
             size: 42,
-            color: Colors.black,
-          ),
-        ),
-        Text.rich(
-          TextSpan(
-            style: GoogleFonts.montserrat(
-                fontSize: fontSize, fontWeight: FontWeight.bold),
-            children: [
-              TextSpan(
-                text: 'C',
-                style: GoogleFonts.montserrat(
-                  fontSize: fontSize,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.black,
-                ),
-              ),
-              TextSpan(
-                text: 'OFF',
-                style: GoogleFonts.montserrat(
-                  fontSize: fontSize,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.green.shade700,
-                ),
-              ),
-              TextSpan(
-                text: 'EE',
-                style: GoogleFonts.montserrat(
-                  fontSize: fontSize,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.black,
-                ),
-              ),
-            ],
+            color: Colors.pinkAccent,
           ),
         ),
       ],

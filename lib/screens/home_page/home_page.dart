@@ -6,13 +6,13 @@ import 'package:flutter/material.dart';
 import '../../components/menu_drawer.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({this.auth});
+  const HomePage({required this.auth});
   final auth;
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: NavigationBar(),
+      appBar: NavigationBar(auth: auth,),
       drawer: MenuDrawer(),
       body: SingleChildScrollView(
         child: Container(

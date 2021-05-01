@@ -22,7 +22,6 @@ class RegisterModel {
     this.birthMonthTypeError = false,
     this.birthDayTypeError = false,
     this.haveChildrenTypeError = false,
-    this.formType = EmailSignInFormType.signIn,
   });
 
   String email;
@@ -40,7 +39,6 @@ class RegisterModel {
   String haveChildren;
   bool isSubmited;
   bool isLoading;
-  EmailSignInFormType formType;
 
   // 数字が入力されているか判別する
   bool callNumberTypeError;
@@ -48,37 +46,110 @@ class RegisterModel {
   bool birthMonthTypeError;
   bool birthDayTypeError;
   bool haveChildrenTypeError;
-  bool get passwordCheck => password == confirmPassword;
-  bool get passwordValid => isSubmited == true && (password.isEmpty || password.length < 7 || password.length > 16);
-  bool get confirmPasswordValid => isSubmited == true && (confirmPassword.isEmpty || confirmPassword.length < 7 || confirmPassword.length > 16);
-  bool get emailValid => isSubmited == true && (email.isEmpty || !email.contains('@') || email.length > 30);
-  bool get surNameValid => isSubmited == true && (surName.isEmpty || surName.length  > 20);
-  bool get lastNameValid => isSubmited == true && (lastName.isEmpty || lastName.length > 209);
-  bool get surNameFuriganaValid => isSubmited == true && (surNameFurigana.isEmpty || surNameFurigana.length > 20);
-  bool get lastNameFuriganaValid => isSubmited == true && (lastNameFurigana.isEmpty || lastNameFurigana.length > 20);
-  bool get callNumberValid => isSubmited == true && (callNumber.length < 0 || callNumber.length > 12 || int.tryParse(callNumber)  == null || callNumberTypeError == true);
-  bool get birthYearValid => isSubmited == true && (birthYear.length > 3 || birthYear.length < 0 || int.tryParse(birthYear)  == null || birthYearTypeError == true);
-  bool get birthMonthValid => isSubmited == true && (birthMonth.length > 3 || birthMonth.length < 0 || int.tryParse(birthMonth) == null || birthMonthTypeError == true);
-  bool get birthDayValid => isSubmited == true &&  (birthDay.length > 3 || birthDay.length < 0 || int.tryParse(birthDay) == null || birthDayTypeError == true);
-  bool get haveChildValid => isSubmited == true && (haveChildren.length < 15 || int.tryParse(haveChildren) == null);
 
-  bool checkInputForm() {
-    if (!emailValid &&
-        !passwordValid &&
-        !confirmPasswordValid&&
-        !surNameValid&&
-        !lastNameValid &&
-        !surNameFuriganaValid&&
-        !lastNameFuriganaValid&&
-        !callNumberValid &&
-        !birthYearValid &&
-        !birthMonthValid &&
-        !birthDayValid &&
-        !haveChildValid
+  bool get passwordCheck => password == confirmPassword;
+
+  bool get passwordValid =>
+      isSubmited == true &&
+      (password.isEmpty || password.length < 7 || password.length > 16);
+
+  bool get confirmPasswordValid =>
+      isSubmited == true &&
+      (confirmPassword.isEmpty ||
+          confirmPassword.length < 7 ||
+          confirmPassword.length > 16);
+
+  bool get emailValid =>
+      isSubmited == true &&
+      (email.isEmpty || !email.contains('@') || email.length > 30);
+
+  bool get surNameValid =>
+      isSubmited == true && (surName.isEmpty || surName.length > 20);
+
+  bool get lastNameValid =>
+      isSubmited == true && (lastName.isEmpty || lastName.length > 20);
+
+  bool get surNameFuriganaValid =>
+      isSubmited == true &&
+      (surNameFurigana.isEmpty || surNameFurigana.length > 20);
+
+  bool get lastNameFuriganaValid =>
+      isSubmited == true &&
+      (lastNameFurigana.isEmpty || lastNameFurigana.length > 20);
+
+  bool get callNumberValid =>
+      isSubmited == true &&
+      (callNumber.isEmpty ||
+          callNumber.length > 12 ||
+          int.tryParse(callNumber) == null ||
+          callNumberTypeError == true);
+
+  bool get birthYearValid =>
+      isSubmited == true &&
+      (birthYear.length > 4 ||
+          birthYear.length < 0 ||
+          int.tryParse(birthYear) == null ||
+          birthYearTypeError == true);
+
+  bool get birthMonthValid =>
+      isSubmited == true &&
+      (birthMonth.length > 2 ||
+          birthMonth.length < 0 ||
+          int.tryParse(birthMonth) == null ||
+          birthMonthTypeError == true);
+
+  bool get birthDayValid =>
+      isSubmited == true &&
+      (birthDay.length > 2 ||
+          birthDay.length < 0 ||
+          int.tryParse(birthDay) == null ||
+          birthDayTypeError == true);
+
+  bool get haveChildValid =>
+      isSubmited == true &&
+      isSpouce == true &&
+      (haveChildren.isEmpty ||
+          haveChildren.length > 15 ||
+          int.tryParse(haveChildren) == null);
+
+
+
+  bool registerModelValid() {
+    if ((email.isEmpty || !email.contains('@') || email.length > 30) &&
+        (password.isEmpty || password.length < 7 || password.length > 16) &&
+        (confirmPassword.isEmpty ||
+            confirmPassword.length < 7 ||
+            confirmPassword.length > 16) &&
+        (surName.isEmpty || surName.length > 20) &&
+        (lastName.isEmpty || lastName.length > 209) &&
+        (surNameFurigana.isEmpty || surNameFurigana.length > 20) &&
+        (lastNameFurigana.isEmpty || lastNameFurigana.length > 20) &&
+        (callNumber.length < 0 ||
+            callNumber.length > 12 ||
+            int.tryParse(callNumber) == null ||
+            callNumberTypeError == true) &&
+        (birthYear.length > 4 ||
+            birthYear.length < 0 ||
+            int.tryParse(birthYear) == null ||
+            birthYearTypeError == true) &&
+        (birthMonth.length > 2 ||
+            birthMonth.length < 0 ||
+            int.tryParse(birthMonth) == null ||
+            birthMonthTypeError == true) &&
+        (birthDay.length > 2 ||
+            birthDay.length < 0 ||
+            int.tryParse(birthDay) == null ||
+            birthDayTypeError == true) &&
+         (isSpouce == true &&
+            (haveChildren == '' ||
+                haveChildren.length > 15 ||
+                int.tryParse(haveChildren) == null))
     ) {
-      return true;
-    } else {
+      print('false');
       return false;
+    } else {
+      print('true');
+      return true;
     }
   }
 
@@ -98,7 +169,6 @@ class RegisterModel {
     String? haveChildren,
     bool? isLoading,
     bool? isSubmited,
-    EmailSignInFormType? formType,
     bool? callNumberTypeError,
     bool? birthYearTypeError,
     bool? birthMonthTypeError,
@@ -121,7 +191,6 @@ class RegisterModel {
       haveChildren: haveChildren ?? this.haveChildren,
       isLoading: isLoading ?? this.isLoading,
       isSubmited: isSubmited ?? this.isSubmited,
-      formType: formType ?? this.formType,
       birthYearTypeError: birthYearTypeError ?? this.birthYearTypeError,
       birthMonthTypeError: birthMonthTypeError ?? this.birthMonthTypeError,
       birthDayTypeError: birthDayTypeError ?? this.birthDayTypeError,

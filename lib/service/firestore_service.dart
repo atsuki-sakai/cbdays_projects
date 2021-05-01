@@ -22,6 +22,7 @@ class FireStoreService {
   Future<Map<String, dynamic>?> getData({required String path}) async {
     final reference = FirebaseFirestore.instance.doc(path);
     final snapShot = await reference.get();
+    print('snapShot => ${snapShot.data()}');
     return snapShot.data();
 }
 }

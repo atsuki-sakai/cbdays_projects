@@ -1,7 +1,7 @@
 import 'dart:ui';
 import 'package:cbdyas_project/components/app_logo.dart';
 import 'package:cbdyas_project/components/navigation_bar/navigation_bar.dart';
-import 'package:cbdyas_project/constants/routes.dart';
+import 'package:cbdyas_project/model/routes.dart';
 import 'package:cbdyas_project/screens/about_us/about_us.dart';
 import 'package:cbdyas_project/screens/cbd_description/cbd_description.dart';
 import 'package:cbdyas_project/screens/cbd_history/cbd_history.dart';
@@ -71,12 +71,12 @@ class MenuDrawer extends StatelessWidget {
           return ListTile(
             contentPadding:
                 const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
-            leading: Icon(menuIcons[index - 1]),
-            trailing: Icon(Icons.arrow_forward_ios),
+            leading: Icon(menuIcons[index - 1],color: Colors.indigo,),
+            trailing: Icon(Icons.arrow_forward_ios,color: Colors.grey,),
             title: Text(
               menuItems[index - 1],
               style: GoogleFonts.montserrat(
-                  fontSize: 16.0, fontWeight: FontWeight.w300),
+                  fontSize: 18.0, fontWeight: FontWeight.w500),
             ),
             onTap: () => transitionToMenuItem(context, index - 1),
           );
@@ -89,27 +89,12 @@ class MenuDrawer extends StatelessWidget {
   Widget _buildDrawerHeader() {
     return Container(
       alignment: Alignment.center,
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: FractionalOffset.topCenter,
-          end: FractionalOffset.bottomCenter,
-          colors: const [Colors.lightGreen, Colors.white],
-        ),
-      ),
       height: 120,
       width: double.infinity,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           AppLogo(fontSize: 28.0),
-          SizedBox(
-            width: 12.0,
-          ),
-          Container(
-            width: 5,
-            height: 30,
-            color: Colors.green.shade600,
-          ),
         ],
       ),
     );

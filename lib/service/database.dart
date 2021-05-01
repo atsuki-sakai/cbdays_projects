@@ -14,6 +14,7 @@ class Database {
   Future<CbdaysUser?> fetchUser({required userId}) async {
     final _path = APIPath.user(uid: userId);
     final _data = await _service.getData(path: _path);
+    print('_data -> $_data');
     if(_data == null) return null;
     final CbdaysUser user = CbdaysUser.fromMap(_data);
     return user;

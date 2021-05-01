@@ -1,32 +1,21 @@
 import 'package:cbdyas_project/components/footer.dart';
 import 'package:cbdyas_project/components/menu_drawer.dart';
 import 'package:cbdyas_project/components/navigation_bar/navigation_bar.dart';
+import 'package:cbdyas_project/service/auth.dart';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
-// youtube video ID :  GR6ibJnC0rs
 
-class CBDHistoryPage extends StatefulWidget {
-  @override
-  _CBDHistoryPageState createState() => _CBDHistoryPageState();
-}
+class CBDHistoryPage extends StatelessWidget {
+  final Auth auth;
 
-class _CBDHistoryPageState extends State<CBDHistoryPage> {
-  YoutubePlayerController _controller = YoutubePlayerController(
-    initialVideoId: 'GR6ibJnC0rs',
-    params: YoutubePlayerParams(
-      startAt: Duration(seconds: 0),
-      showControls: true,
-      showFullscreenButton: true,
-    ),
-  );
-
+  const CBDHistoryPage({Key? key,required this.auth}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: NavigationBar(),
+      appBar: NavigationBar(auth: auth,),
       drawer: MenuDrawer(),
       body: SingleChildScrollView(
         child: Column(
@@ -139,14 +128,7 @@ class _CBDHistoryPageState extends State<CBDHistoryPage> {
                 ],
               ),
             ),
-            Container(
-              width: MediaQuery.of(context).size.width * 0.7,
-              child: YoutubePlayerControllerProvider(
-                  controller: _controller,
-                  child: YoutubePlayerIFrame(
-                    aspectRatio: 16 / 9,
-                  )),
-            ),
+            VideoPlayer(),
             SizedBox(
               height: 40,
             ),
@@ -154,6 +136,41 @@ class _CBDHistoryPageState extends State<CBDHistoryPage> {
           ],
         ),
       ),
+    );
+  }
+}
+
+class VideoPlayer extends StatefulWidget {
+  @override
+  _VideoPlayerState createState() => _VideoPlayerState();
+}
+
+class _VideoPlayerState extends State<VideoPlayer> {
+  YoutubePlayerController _controller = YoutubePlayerController(
+    initialVideoId: 'GR6ibJnC0rs',
+    params: YoutubePlayerParams(
+      startAt: Duration(seconds: 0),
+      showControls: true,
+      showFullscreenButton: true,
+    ),
+  );
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _controller.close();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: MediaQuery.of(context).size.width * 0.7,
+      child: YoutubePlayerControllerProvider(
+          controller: _controller,
+          child: YoutubePlayerIFrame(
+            aspectRatio: 16 / 9,
+          )),
     );
   }
 }

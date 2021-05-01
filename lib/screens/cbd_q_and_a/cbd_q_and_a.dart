@@ -1,14 +1,18 @@
 import 'package:cbdyas_project/components/footer.dart';
 import 'package:cbdyas_project/components/menu_drawer.dart';
 import 'package:cbdyas_project/components/navigation_bar/navigation_bar.dart';
+import 'package:cbdyas_project/service/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CBDQAndAPage extends StatelessWidget {
+  final Auth auth;
+
+  const CBDQAndAPage({Key? key,required this.auth}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: NavigationBar(),
+      appBar: NavigationBar(auth: auth,),
       drawer: MenuDrawer(),
       body: SingleChildScrollView(
         child: Column(
