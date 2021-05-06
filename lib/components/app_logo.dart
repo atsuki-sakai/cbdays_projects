@@ -40,14 +40,6 @@ class AppLogo extends StatelessWidget {
           color: Colors.green,
           margin: const EdgeInsets.only(left: 6),
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 6),
-          child: Icon(
-            Icons.science_rounded,
-            size: 42,
-            color: Colors.pinkAccent,
-          ),
-        ),
       ],
     );
   }

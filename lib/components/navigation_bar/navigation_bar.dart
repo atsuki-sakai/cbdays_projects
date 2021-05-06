@@ -43,7 +43,7 @@ class NavigationBar extends StatelessWidget with PreferredSizeWidget {
 class MobileNavigationBar extends StatelessWidget {
   final double iconSize = 22.0;
   final double buttonSpace = 8.0;
-  final double titleSize = 28.0;
+  final double titleSize = 15.0;
   final double navHeight = 60;
   final double buttonTextSize = 12.0;
   final double buttonWidth = 90;

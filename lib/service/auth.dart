@@ -46,6 +46,7 @@ class Auth implements BaseAuth {
     }
   }
 
+  //FIXME -　デバック時　NetWork Errorが発生する場合がある。 firebaseにだけユーザーが作成されていたので修正。
   @override
   Future<void> createUser(
       {required String email,
@@ -53,7 +54,6 @@ class Auth implements BaseAuth {
       required RegisterModel model}) async {
     final _credential = await _auth.createUserWithEmailAndPassword(
         email: email, password: password);
-    //FIXME - firebase auth だけ保存される場合がある NetWork Error
     await sendEmail();
     final credential = CreateUserCredentials(
         uid: _credential.user!.uid,
@@ -93,7 +93,6 @@ class Auth implements BaseAuth {
               '初回ログイン時のみ、メールアドレスの認証が必要です登録したメールアドレスに認証用のメールを送信しました、ご確認ください。',
         );
       final user = await database.fetchUser(userId: _userCredential.user!.uid);
-      print('login user => ${user == null ? 'null' : user.email}');
       _userSubject.sink.add(user);
     } catch (e) {
       rethrow;

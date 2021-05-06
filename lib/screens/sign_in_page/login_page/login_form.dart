@@ -156,7 +156,7 @@ class _DeskTopLoginFormState extends State<DeskTopLoginForm>
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Spacer(flex: 1,),
+                          SizedBox(width: 12,),
                           Icon(
                             Icons.email_outlined,
                             color: Colors.blue,
@@ -164,11 +164,8 @@ class _DeskTopLoginFormState extends State<DeskTopLoginForm>
                           SizedBox(
                             width: 12,
                           ),
-                          SizedBox(
-                            width: 220,
-                            child: _buildEmailTextField(model: model),
-                          ),
-                          Spacer(flex: 3,),
+                          Expanded(child: _buildEmailTextField(model: model)),
+                          SizedBox(width: 12,),
                           Icon(
                             Icons.lock,
                             color: Colors.blue,
@@ -176,11 +173,8 @@ class _DeskTopLoginFormState extends State<DeskTopLoginForm>
                           SizedBox(
                             width: 12,
                           ),
-                          SizedBox(
-                            width: 220,
-                            child: _buildPasswordTextField(model: model),
-                          ),
-                          Spacer(flex: 1,),
+                          Expanded(child: _buildPasswordTextField(model: model)),
+                          SizedBox(width: 12,),
                         ],
                       ),
                     ],
@@ -382,7 +376,7 @@ class _MobileLoginFormState extends State<MobileLoginForm>
                       ),
                       Row(
                         children: [
-                          Spacer(flex: 1,),
+                          SizedBox(width: 12,),
                           Icon(
                             Icons.email_outlined,
                             color: Colors.blue,
@@ -390,15 +384,14 @@ class _MobileLoginFormState extends State<MobileLoginForm>
                           SizedBox(
                             width: 6,
                           ),
-                          SizedBox(
-                            width: 300,
+                          Expanded(
                             child: _buildEmailTextField(model: model),
                           ),
-                          Spacer(flex: 1,),
+                          SizedBox(width: 12,),
                         ],
                       ),
                       Row(children: [
-                        Spacer(flex: 1,),
+                        SizedBox(width: 12,),
                         Icon(
                           Icons.lock,
                           color: Colors.blue,
@@ -406,11 +399,10 @@ class _MobileLoginFormState extends State<MobileLoginForm>
                         SizedBox(
                           width: 6,
                         ),
-                        SizedBox(
-                          width: 300,
+                        Expanded(
                           child: _buildPasswordTextField(model: model),
                         ),
-                        Spacer(flex: 1,),
+                        SizedBox(width: 12,),
                       ],),
                     ],
                   ),

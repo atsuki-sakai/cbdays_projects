@@ -1,6 +1,5 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
 
 class FireStoreService {
   FireStoreService._();
@@ -15,14 +14,12 @@ class FireStoreService {
   }
   Future<void> deleteData({required String path}) async {
     final reference = FirebaseFirestore.instance.doc(path);
-    print('delete: $path');
     await reference.delete();
   }
 
   Future<Map<String, dynamic>?> getData({required String path}) async {
     final reference = FirebaseFirestore.instance.doc(path);
     final snapShot = await reference.get();
-    print('snapShot => ${snapShot.data()}');
     return snapShot.data();
 }
 }

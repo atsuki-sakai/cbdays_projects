@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'package:cbdyas_project/helper/custom_exception.dart';
-import 'package:cbdyas_project/model/create_user_credentials.dart';
 import 'package:cbdyas_project/screens/sign_in_page/register_page/register_model.dart';
 import 'package:cbdyas_project/service/auth.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:rxdart/subjects.dart';
 
 class RegisterBloc {
   RegisterBloc({required this.auth});

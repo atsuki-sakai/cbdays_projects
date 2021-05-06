@@ -63,22 +63,26 @@ class MenuDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isSmall = MediaQuery.of(context).size.width < 800 ? true : false;
     return Drawer(
       child: ListView.builder(
         itemBuilder: (context, index) {
-          if (index == 0) return _buildDrawerHeader();
+          if (index == 0) return _buildDrawerHeader(isSmall);
           if (index == menuItems.length + 1) return _closeDrawerButton(context);
-          return ListTile(
-            contentPadding:
-                const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
-            leading: Icon(menuIcons[index - 1],color: Colors.indigo,),
-            trailing: Icon(Icons.arrow_forward_ios,color: Colors.grey,),
-            title: Text(
-              menuItems[index - 1],
-              style: GoogleFonts.montserrat(
-                  fontSize: 18.0, fontWeight: FontWeight.w500),
+          return SizedBox(
+            width: isSmall ? 60 : 120,
+            child: ListTile(
+              contentPadding:
+                  const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8.0),
+              leading: Icon(menuIcons[index - 1],color: Colors.indigo,),
+              trailing: Icon(Icons.arrow_forward_ios,color: Colors.grey,),
+              title: Text(
+                menuItems[index - 1],
+                style: GoogleFonts.montserrat(
+                    fontSize: 15.0, fontWeight: FontWeight.w500),
+              ),
+              onTap: () => transitionToMenuItem(context, index - 1),
             ),
-            onTap: () => transitionToMenuItem(context, index - 1),
           );
         },
         itemCount: menuItems.length + 2,
@@ -86,15 +90,15 @@ class MenuDrawer extends StatelessWidget {
     );
   }
 
-  Widget _buildDrawerHeader() {
+  Widget _buildDrawerHeader( bool isSmall) {
     return Container(
       alignment: Alignment.center,
-      height: 120,
+      height:  isSmall ? 60 : 120,
       width: double.infinity,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          AppLogo(fontSize: 28.0),
+          AppLogo(fontSize: isSmall ? 20 : 28.0),
         ],
       ),
     );

@@ -1,11 +1,11 @@
 import 'package:cbdyas_project/model/routes.dart';
-import 'package:cbdyas_project/screens/utils/privacy_policy_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Footer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final isSmall = MediaQuery.of(context).size.width < 800 ? true : false;
     return Column(
       children: [
         Row(
@@ -16,16 +16,16 @@ class Footer extends StatelessWidget {
               child: Text(
                 'プライバシーポリシー',
                 style: GoogleFonts.sawarabiMincho(
-                    fontSize: 14.0, color: Colors.grey),
+                    fontSize: isSmall ? 10 : 14.0, color: Colors.grey),
               ),
-              onPressed: () => Routes.pushRoute(context, route: Routes.privacyAndPoricyPage),
+              onPressed: () => pushRoute(context, route: Routes.privacyAndPoricyPage),
             ),
             Spacer(flex: 1,),
             TextButton(
               child: Text('特定商取引法に基づく表記',
                   style: GoogleFonts.sawarabiMincho(
-                      fontSize: 14.0, color: Colors.grey)),
-              onPressed: () => Routes.pushRoute(context, route: Routes.privacyAndPoricyPage),
+                      fontSize:  isSmall ? 10 : 14.0, color: Colors.grey)),
+              onPressed: () => pushRoute(context, route: Routes.privacyAndPoricyPage),
             ),
             Spacer(flex: 2,),
           ],

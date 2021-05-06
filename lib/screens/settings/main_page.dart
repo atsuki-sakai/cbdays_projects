@@ -5,6 +5,7 @@ import 'package:cbdyas_project/screens/cbd_description/cbd_description.dart';
 import 'package:cbdyas_project/screens/cbd_history/cbd_history.dart';
 import 'package:cbdyas_project/screens/cbd_q_and_a/cbd_q_and_a.dart';
 import 'package:cbdyas_project/screens/certificate/certificate_page.dart';
+import 'package:cbdyas_project/screens/product_detail/item_detail_page.dart';
 import 'package:cbdyas_project/screens/shop/shop_page.dart';
 import 'package:cbdyas_project/screens/sign_in_page/login_page/login_page.dart';
 import 'package:cbdyas_project/screens/utils/privacy_policy_page.dart';
@@ -35,6 +36,7 @@ class MainPage extends StatelessWidget {
         Routes.cartPage : (context) => CartPage(auth: auth,),
         Routes.shopPage: (context) => ShopPage(auth: auth,),
         Routes.privacyAndPoricyPage : (context) => PrivacyPolicyPage(auth: auth,),
+        Routes.productDetailPage : (context) => ProductDetailPage(auth: auth),
       },
     );
   }

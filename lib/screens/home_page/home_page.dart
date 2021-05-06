@@ -27,7 +27,7 @@ class HomePage extends StatelessWidget {
               SizedBox(
                 height: 60,
               ),
-              ProductsContents(),
+              ProductsContents(auth: auth,),
               Footer(),
             ],
           ),

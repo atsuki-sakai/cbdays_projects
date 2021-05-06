@@ -1,3 +1,4 @@
+import 'package:cbdyas_project/components/menu_drawer.dart';
 import 'package:cbdyas_project/components/navigation_bar/navigation_bar.dart';
 import 'package:cbdyas_project/service/auth.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,7 @@ class ShopPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: NavigationBar(auth: auth,),
+      drawer: MenuDrawer(),
       body: Center(
         child: Container(
           child: Text('Shop'),

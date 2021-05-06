@@ -8,75 +8,58 @@ import 'package:google_fonts/google_fonts.dart';
 class CBDQAndAPage extends StatelessWidget {
   final Auth auth;
 
-  const CBDQAndAPage({Key? key,required this.auth}) : super(key: key);
+  const CBDQAndAPage({Key? key, required this.auth}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
+    final isSmall = MediaQuery.of(context).size.width < 800 ? true : false;
     return Scaffold(
-      appBar: NavigationBar(auth: auth,),
+      appBar: NavigationBar(
+        auth: auth,
+      ),
       drawer: MenuDrawer(),
       body: SingleChildScrollView(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              height: 40.0,
+              height: isSmall ? 22.0 : 40.0,
             ),
             Text(
               'CBD C&A',
               style: GoogleFonts.montserrat(
-                  fontWeight: FontWeight.w500, fontSize: 42.0),
+                  fontWeight: FontWeight.w500, fontSize: isSmall ? 32.0 : 42.0),
             ),
             SizedBox(
-              height: 40.0,
+              height: isSmall ? 22.0 : 40.0,
             ),
             ClipRRect(
               borderRadius: BorderRadius.circular(6),
               child: Image.asset(
                 'images/q_and_a.jpg',
-                width: MediaQuery.of(context).size.width * 0.5,
+                width: MediaQuery.of(context).size.width * 0.7,
                 fit: BoxFit.fitWidth,
               ),
             ),
             SizedBox(
-              height: 40.0,
+              height: isSmall ? 22.0 : 40.0,
             ),
             Container(
-              width: MediaQuery.of(context).size.width * 0.7,
+              width: MediaQuery.of(context).size.width * 0.9,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  questionLabel(
+                  _buildQuestionLabel(
+                      isSmall: isSmall,
                       questionText: 'アイソレートに味や匂いはありますか？',
                       answerText: 'アイソレートパウダーは無味無臭です。'),
                   SizedBox(
                     height: 40.0,
                   ),
-                  Row(
-                    children: [
-                      Text(
-                        'Q',
-                        style: GoogleFonts.sawarabiMincho(
-                          fontSize: 22.0,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.red,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 6,
-                      ),
-                      Text(
-                        ' : アイソレートの使用方法は？',
-                        style: GoogleFonts.sawarabiMincho(
-                          fontSize: 22.0,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                    ],
-                  ),
+                  _buildHowToTitle(isSmall: isSmall),
                   SizedBox(
                     height: 12,
                   ),
-                  useCBDLabel(text: 'VAPEリキッドに追加'),
+                  useCBDLabel(text: 'VAPEリキッドに追加',isSmall: isSmall),
                   SizedBox(
                     height: 12,
                   ),
@@ -90,7 +73,7 @@ class CBDQAndAPage extends StatelessWidget {
                   SizedBox(
                     height: 12,
                   ),
-                  useCBDLabel(text: 'CBDリキッドを自作'),
+                  useCBDLabel(text: 'CBDリキッドを自作',isSmall: isSmall),
                   SizedBox(
                     height: 12,
                   ),
@@ -104,7 +87,7 @@ class CBDQAndAPage extends StatelessWidget {
                   SizedBox(
                     height: 12,
                   ),
-                  useCBDLabel(text: '吸引'),
+                  useCBDLabel(text: '吸引',isSmall: isSmall),
                   SizedBox(
                     height: 12,
                   ),
@@ -118,7 +101,7 @@ class CBDQAndAPage extends StatelessWidget {
                   SizedBox(
                     height: 12,
                   ),
-                  useCBDLabel(text: 'CBDオイルをを自作'),
+                  useCBDLabel(text: 'CBDオイルをを自作',isSmall: isSmall),
                   SizedBox(
                     height: 12,
                   ),
@@ -188,7 +171,7 @@ class CBDQAndAPage extends StatelessWidget {
                   SizedBox(
                     height: 12,
                   ),
-                  useCBDLabel(text: 'そのまま食べる・舌下'),
+                  useCBDLabel(text: 'そのまま食べる・舌下',isSmall: isSmall),
                   SizedBox(
                     height: 12,
                   ),
@@ -209,7 +192,7 @@ class CBDQAndAPage extends StatelessWidget {
                   SizedBox(
                     height: 12,
                   ),
-                  useCBDLabel(text: '食べ物・飲み物に入れる'),
+                  useCBDLabel(text: '食べ物・飲み物に入れる',isSmall: isSmall),
                   SizedBox(
                     height: 12,
                   ),
@@ -230,7 +213,7 @@ class CBDQAndAPage extends StatelessWidget {
                   SizedBox(
                     height: 12,
                   ),
-                  useCBDLabel(text: '紙巻きタバコに混ぜる'),
+                  useCBDLabel(text: '紙巻きタバコに混ぜる',isSmall: isSmall),
                   SizedBox(
                     height: 12,
                   ),
@@ -274,17 +257,45 @@ class CBDQAndAPage extends StatelessWidget {
     );
   }
 
-  Text useCBDLabel({required String text}) {
+  Row _buildHowToTitle({required bool isSmall}) {
+    return Row(
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        Text(
+          'Q',
+          style: GoogleFonts.sawarabiMincho(
+            fontSize: isSmall ? 16: 22.0,
+            fontWeight: FontWeight.w600,
+            color: Colors.red,
+          ),
+        ),
+        SizedBox(
+          width: 6,
+        ),
+        Text(
+          ' : アイソレートの使用方法は？',
+          style: GoogleFonts.sawarabiMincho(
+            fontSize: isSmall ? 16: 22.0,
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Text useCBDLabel({required String text, required  bool isSmall}) {
     return Text('<< $text >>',
         style: GoogleFonts.sawarabiMincho(
-          fontSize: 20.0,
+          fontSize: isSmall ? 14.0 : 20.0,
           fontWeight: FontWeight.w700,
           color: Colors.black87,
         ));
   }
 
-  Column questionLabel(
-      {required String questionText, required String answerText}) {
+  Column _buildQuestionLabel(
+      {required bool isSmall,
+      required String questionText,
+      required String answerText}) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
@@ -293,9 +304,10 @@ class CBDQAndAPage extends StatelessWidget {
             Text(
               'Q',
               style: GoogleFonts.sawarabiMincho(
-                fontSize: 22.0,
-                fontWeight: FontWeight.w600,
+                fontSize: isSmall ? 14 : 22.0,
+                fontWeight: FontWeight.w500,
                 color: Colors.red,
+
               ),
             ),
             SizedBox(
@@ -303,8 +315,9 @@ class CBDQAndAPage extends StatelessWidget {
             ),
             Text(
               ' : $questionText',
+              maxLines: 2,
               style: GoogleFonts.sawarabiMincho(
-                fontSize: 22.0,
+                fontSize: isSmall ? 14 : 22.0,
                 fontWeight: FontWeight.w400,
               ),
             ),
@@ -318,7 +331,7 @@ class CBDQAndAPage extends StatelessWidget {
             Text(
               'A',
               style: GoogleFonts.sawarabiMincho(
-                fontSize: 22.0,
+                fontSize: isSmall ? 14 : 22.0,
                 fontWeight: FontWeight.w600,
                 color: Colors.red,
               ),
@@ -328,7 +341,7 @@ class CBDQAndAPage extends StatelessWidget {
             ),
             Text(' : $answerText',
                 style: GoogleFonts.sawarabiMincho(
-                  fontSize: 22.0,
+                  fontSize: isSmall ? 14 : 22.0,
                   fontWeight: FontWeight.w400,
                 )),
           ],

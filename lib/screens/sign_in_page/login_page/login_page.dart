@@ -9,7 +9,14 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.grey.shade50,
+        shadowColor: Colors.transparent,
+        leading: IconButton(icon: Icon(Icons.arrow_back_ios_outlined, color: Colors.black), onPressed: () {
+          Navigator.pop(context);
+        },),
+      ),
       body: SingleChildScrollView(
         child: Center(
           child: Container(

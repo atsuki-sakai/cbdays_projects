@@ -1,8 +1,5 @@
-
-import 'package:cbdyas_project/components/show_alert.dart';
 import 'package:cbdyas_project/model/cbdays_user.dart';
 import 'package:cbdyas_project/model/routes.dart';
-import 'package:cbdyas_project/screens/sign_in_page/login_page/login_page.dart';
 import 'package:cbdyas_project/service/auth.dart';
 import 'package:flutter/material.dart';
 
@@ -13,11 +10,9 @@ class SubNavigationBar extends StatelessWidget {
   final Auth auth;
 
   void pushLoginPage(BuildContext context) {
-    print('login');
     Navigator.pushNamed(context, Routes.loginPage);
   }
   void signOut(BuildContext context) async {
-    print('logout');
     if(auth.currentUser != null){
       try {
         await auth.logOut(uid: auth.currentUser!.uid);
@@ -84,7 +79,9 @@ class SubNavigationBar extends StatelessWidget {
                 ),
                 IconButton(
                   tooltip: 'Cart',
-                  onPressed: () => pushCartPage,
+                  onPressed: () {
+                    pushCartPage(context);
+                  },
                   icon: Icon(
                     Icons.shopping_basket_outlined,
                     size: iconSize,

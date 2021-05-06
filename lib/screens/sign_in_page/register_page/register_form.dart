@@ -933,7 +933,7 @@ class _MobileRegisterFormState extends State<MobileRegisterForm>
   Card _buildHaveChildrenField({required RegisterModel model}) {
     return Card(
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 20),
+        padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 6),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -944,7 +944,6 @@ class _MobileRegisterFormState extends State<MobileRegisterForm>
             Row(
               mainAxisSize: MainAxisSize.max,
               children: [
-                Spacer(),
                 Icon(
                   Icons.child_care,
                   color: Colors.blue,
@@ -952,8 +951,7 @@ class _MobileRegisterFormState extends State<MobileRegisterForm>
                 SizedBox(
                   width: 12,
                 ),
-                SizedBox(width: 140, child: _haveChildredField(model: model)),
-                Spacer(),
+                Expanded(child: _haveChildredField(model: model)),
               ],
             ),
           ],
@@ -965,7 +963,7 @@ class _MobileRegisterFormState extends State<MobileRegisterForm>
   Card _buildIsSpouceField({required RegisterModel model}) {
     return Card(
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 30),
+        padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 6),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -1012,7 +1010,7 @@ class _MobileRegisterFormState extends State<MobileRegisterForm>
   Card _buildBirthDayField({required RegisterModel model}) {
     return Card(
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 30),
+        padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 6),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -1023,7 +1021,6 @@ class _MobileRegisterFormState extends State<MobileRegisterForm>
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-               Spacer(),
                 Icon(
                   Icons.outlined_flag,
                   color: Colors.blue,
@@ -1031,16 +1028,15 @@ class _MobileRegisterFormState extends State<MobileRegisterForm>
                 SizedBox(
                   width: 12,
                 ),
-                SizedBox(width: 88, child: _birthYearField(model: model)),
+                Expanded(flex: 2, child: _birthYearField(model: model)),
                 SizedBox(
                   width: 12,
                 ),
-                SizedBox(width: 88, child: _birthMonthField(model: model)),
+                Expanded(flex: 1, child: _birthMonthField(model: model)),
                 SizedBox(
                   width: 12,
                 ),
-                SizedBox(width: 88, child: _birthDayField(model: model)),
-                Spacer(),
+                Expanded(flex: 1, child: _birthDayField(model: model)),
               ],
             ),
           ],
@@ -1052,7 +1048,7 @@ class _MobileRegisterFormState extends State<MobileRegisterForm>
   Card _buildCallNumberField({required RegisterModel model}) {
     return Card(
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 30),
+        padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 6),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -1063,7 +1059,6 @@ class _MobileRegisterFormState extends State<MobileRegisterForm>
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Spacer(),
                 Icon(
                   Icons.call,
                   color: Colors.blue,
@@ -1071,8 +1066,7 @@ class _MobileRegisterFormState extends State<MobileRegisterForm>
                 SizedBox(
                   width: 12,
                 ),
-                SizedBox(width: 300, child: _callNumberField(model: model)),
-                Spacer(),
+                Expanded(child: _callNumberField(model: model)),
               ],
             ),
           ],
@@ -1084,7 +1078,7 @@ class _MobileRegisterFormState extends State<MobileRegisterForm>
   Card _buildUserNameField({required RegisterModel model}) {
     return Card(
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 30),
+        padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 6),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -1094,7 +1088,6 @@ class _MobileRegisterFormState extends State<MobileRegisterForm>
             ),
             Row(
               children: [
-                Spacer(),
                 Icon(
                   Icons.person_outline,
                   color: Colors.blue,
@@ -1102,13 +1095,11 @@ class _MobileRegisterFormState extends State<MobileRegisterForm>
                 SizedBox(
                   width: 12,
                 ),
-                SizedBox(width: 300, child: _lastNameField(model: model)),
-                Spacer(),
+                Expanded(child: _lastNameField(model: model)),
               ],
             ),
             Row(
               children: [
-                Spacer(),
                 Icon(
                   Icons.person_outline,
                   color: Colors.blue,
@@ -1116,16 +1107,13 @@ class _MobileRegisterFormState extends State<MobileRegisterForm>
                 SizedBox(
                   width: 12,
                 ),
-                SizedBox(
-                  width: 300,
+                Expanded(
                   child: _surNameTextField(model: model),
                 ),
-                Spacer(),
               ],
             ),
             Row(
               children: [
-                Spacer(),
                 Icon(
                   Icons.create_outlined,
                   color: Colors.blue,
@@ -1133,16 +1121,13 @@ class _MobileRegisterFormState extends State<MobileRegisterForm>
                 SizedBox(
                   width: 12,
                 ),
-                SizedBox(
-                  width: 300,
+                Expanded(
                   child: _lastNameFuriganaField(model: model),
                 ),
-                Spacer(),
               ],
             ),
             Row(
               children: [
-                Spacer(),
                 Icon(
                   Icons.person_outline,
                   color: Colors.blue,
@@ -1150,11 +1135,9 @@ class _MobileRegisterFormState extends State<MobileRegisterForm>
                 SizedBox(
                   width: 12,
                 ),
-                SizedBox(
-                  width: 300,
+                Expanded(
                   child: _surNameFuriganaNameField(model: model),
                 ),
-                Spacer(),
               ],
             ),
           ],
@@ -1166,7 +1149,7 @@ class _MobileRegisterFormState extends State<MobileRegisterForm>
   Card _buildEmailAndPasswordField({required RegisterModel model}) {
     return Card(
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 30),
+        padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 6),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -1176,7 +1159,6 @@ class _MobileRegisterFormState extends State<MobileRegisterForm>
             ),
             Row(
               children: [
-                Spacer(),
                 Icon(
                   Icons.email_outlined,
                   color: Colors.blue,
@@ -1184,13 +1166,11 @@ class _MobileRegisterFormState extends State<MobileRegisterForm>
                 SizedBox(
                   width: 12,
                 ),
-                SizedBox(width: 300, child: _buildEmailTextField(model: model)),
-                Spacer(),
+                Expanded(child: _buildEmailTextField(model: model)),
               ],
             ),
             Row(
               children: [
-                Spacer(),
                 Icon(
                   Icons.lock,
                   color: Colors.blue,
@@ -1198,16 +1178,13 @@ class _MobileRegisterFormState extends State<MobileRegisterForm>
                 SizedBox(
                   width: 12,
                 ),
-                SizedBox(
-                  width: 300,
+                Expanded(
                   child: _buildPasswordTextField(model: model),
                 ),
-                Spacer(),
               ],
             ),
             Row(
               children: [
-                Spacer(),
                 Icon(
                   Icons.lock,
                   color: Colors.blue,
@@ -1215,11 +1192,9 @@ class _MobileRegisterFormState extends State<MobileRegisterForm>
                 SizedBox(
                   width: 12,
                 ),
-                SizedBox(
-                  width: 300,
+                Expanded(
                   child: _buildConfirmPasswordTextField(model: model),
                 ),
-                Spacer(),
               ],
             ),
           ],
